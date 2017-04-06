@@ -7,10 +7,10 @@ import unittest
 
 class LoginSuit(unittest.TestCase):
     def setUp(self):
-        pass
+        print 'Login test start'
 
     def tearDown(self):
-        print 'test over'
+        print 'Login test over'
 
     def test_login(self):
         # self.phone = raw_input("input phone :")
@@ -46,18 +46,12 @@ class LoginSuit(unittest.TestCase):
             print'\nlogin failed'
 
 
-if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(LoginSuit)
-    unittest.TextTestRunner(verbosity=2).run(suite)
-    # unittest.main(verbosity=2)
-
-
 class QueryApplyProcess(LoginSuit):
     def setUp(self):
-        pass
+        print 'search process test start'
 
     def tearDown(self):
-        pass
+        print 'search process test over'
 
     def test_queryApplyProcess(self):
         headers = {"Accept": "application/json",
@@ -71,3 +65,7 @@ class QueryApplyProcess(LoginSuit):
         print "hd_queryApplyProcess content:\n", res2.content
 
 
+if __name__ == '__main__':
+    suite = unittest.TestLoader().loadTestsFromTestCase(LoginSuit)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+    # unittest.main(verbosity=2)

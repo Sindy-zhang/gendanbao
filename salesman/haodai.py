@@ -49,8 +49,7 @@ def hd_queryApplyProcess():
 
 def hd_applyNewLoan():
     url3 = "http://10.0.4.71:8085/business.do?"
-    name = urllib.quote("程永")   #先对中文进行编码
-    data3_1 = {"name": name, "idcard": "330722197011215918", "phone": "13536670555", "loanMoney": "99000", "loanLimit": 12, "empNo": "", "provinceId": 19,
+    data3_1 = {"name": "程永", "idcard": "330722197011215918", "phone": "13536670555", "loanMoney": "99000", "loanLimit": 12, "empNo": "", "provinceId": 19,
                "cityId": 202, "gpsProvince": "", "gpsCity": "", "longitude": "114.03441325044989,65", "channelCode": "010"}
     data3 = {"loanInfoJsonStr": data3_1,
               "method": "applyNewLoan",

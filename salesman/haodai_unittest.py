@@ -48,7 +48,7 @@ class LoginSuit(unittest.TestCase):
 
 class QueryApplyProcess(LoginSuit):
     def setUp(self):
-        print 'search process test start'
+        pass
 
     def tearDown(self):
         print 'search process test over'

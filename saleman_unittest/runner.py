@@ -17,7 +17,7 @@ class testLoinApi(unittest.TestCase):
         url = excel.getUrl
         method = excel.getMethod
         code = excel.getCode
-        # headers_data = excel.getHeaders
+        headers_data = excel.getHeaders
         row = excel.getRows
         headers = {"Accept": "application/json",
                    "Accept-Encoding": "gzip, deflate",
@@ -25,7 +25,7 @@ class testLoinApi(unittest.TestCase):
                    "Accept-Language": "zh-cn"}
         for i in range(0, row-1):
             api = testApi()
-            api_json = api.TestApi(method[i], url[i], data[i], headers)
+            api_json = api.TestApi(method[i], url[i], data[i], headers_data[i])
             print("-------------->>>>>>>>>>>>>>")
             print(api_json)
             if api_json['status'] != "":

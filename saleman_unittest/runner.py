@@ -9,6 +9,9 @@ import xlrd
 
 
 class testLoinApi(unittest.TestCase):
+    def setUp(self):
+        print "start:"
+
     def test_LoginApi(self):
         excel = readExcel()
         excel.path = 'G:\gendanbaocase.xls'
@@ -19,10 +22,6 @@ class testLoinApi(unittest.TestCase):
         code = excel.getCode
         headers_data = excel.getHeaders
         row = excel.getRows
-        headers = {"Accept": "application/json",
-                   "Accept-Encoding": "gzip, deflate",
-                   "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A456",
-                   "Accept-Language": "zh-cn"}
         for i in range(0, row-1):
             api = testApi()
             api_json = api.TestApi(method[i], url[i], data[i], headers_data[i])

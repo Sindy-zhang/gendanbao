@@ -14,11 +14,3 @@ class testApi(object):
             r = requests.get(url, params=eval(data))
         jsdata = json.loads(r.text)
         return jsdata
-
-    # def getCode(self):
-    #     code = self.TestApi.json()['status']
-    #     return code
-    #
-    # def getJson(self):
-    #     json_data = self.TestApi.json()
-    #     return json_data

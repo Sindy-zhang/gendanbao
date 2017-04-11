@@ -75,3 +75,11 @@ class readExcel(object):
         for i in range(1, self.getRows):
             TestHeaders.append(self.getSheet.cell_value(i, 6))
         return TestHeaders
+
+    @property
+    def getCookies(self):
+        # TestCookies = []
+        # for i in range(1, self.getRows):
+        #     TestCookies.append(self.getSheet.cell_value(i, 7))
+        TestCookies = self.getSheet.cell_value(1, 8)
+        return TestCookies

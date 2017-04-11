@@ -23,10 +23,11 @@ class testLoinApi(unittest.TestCase):
         method = excel.getMethod
         code = excel.getCode
         headers_data = excel.getHeaders
+        cookies_data = ''
         row = excel.getRows
         for i in range(0, row-1):
             api = testApi()
-            api_json = api.TestApi(method[i], url[i], data[i], headers_data[i])
+            api_json = api.TestApi(method[i], url[i], data[i], headers_data[i], cookies_data)
             print("-------------->>>>>>>>>>>>>>")
             print(api_json)
             if api_json['status'] != "":
@@ -34,6 +35,7 @@ class testLoinApi(unittest.TestCase):
                 print name[i], "接口 /------------OK！api_json['status'] =", api_json['status']
             else:
                 print name[i], "接口 /------------Failure！"
+            #对登录接口特殊处理，获取sid，并写入到Excel中保存
             if api_json['method'] == 'loginV2' and api_json['status'] == 200:
                 oldWb = xlrd.open_workbook('G:\gendanbaocase.xls', formatting_info=True)
                 oldWb_sheet = oldWb.sheet_by_index(0)
@@ -41,8 +43,14 @@ class testLoinApi(unittest.TestCase):
                 newWb_sheet = newWb.get_sheet(0)
                 newWb_sheet.write(1, 7, api_json['result']['sid'])
                 newWb.save('G:\gendanbaocase.xls')
-                if oldWb_sheet.cell_value(1, 7) == api_json['result']['sid']:
-                    print '写入sid成功 /------------', 'sid =', api_json['result']['sid']
+                print '写入sid成功 /------------OK！', 'sid =', api_json['result']['sid']
+                #构造cookies并写入到Excel中保存
+                login_cookies = {"sid": api_json['result']['sid']}
+                print login_cookies
+                newWb_sheet.write(1, 8, str(login_cookies))
+                newWb.save('G:\gendanbaocase.xls')
+                cookies_data = excel.getCookies
+
 if __name__ == "__main__":
     unittest.main()
 # if __name__ == '__main__':

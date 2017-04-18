@@ -16,7 +16,7 @@ class testLoinApi(unittest.TestCase):
 
     def test_LoginApi(self):
         excel = readExcel()
-        excel.path = 'G:\gendanbaocase.xls'
+        excel.path = 'G:\myPython\mypro\saleman_unittest\gendanbaocase.xls'
         name = excel.getName
         data = excel.getData
         url = excel.getUrl
@@ -50,7 +50,7 @@ class testLoinApi(unittest.TestCase):
                 # newWb_sheet.write(1, 8, str(login_cookies))
                 # newWb.save('G:\gendanbaocase.xls')
                 # cookies_data = excel.getCookies
-                api_cookies = api.SaveCookies('G:\gendanbaocase.xls', api_json['result']['sid'])
+                api_cookies = api.SaveCookies('G:\myPython\mypro\saleman_unittest\gendanbaocase.xls', api_json['result']['sid'])
                 print api_cookies
                 #设置登录后的cookies
                 cookies_data = excel.getCookies

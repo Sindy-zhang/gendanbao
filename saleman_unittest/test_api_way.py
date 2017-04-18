@@ -5,6 +5,7 @@ import json
 from read_xl import readExcel
 import xlrd
 from xlutils.copy import copy
+import urllib
 
 
 class testApi(object):
@@ -15,7 +16,10 @@ class testApi(object):
         elif method == 'get' and data == '':
             r = requests.get(url, cookies=eval(cookies))
         elif method == 'get' and data != '':
-            r = requests.get(url, params=eval(data), cookies=eval(cookies))
+            params_data = urllib.urlencode(eval(data))
+            #print "\n\n", params_data
+            r = requests.get(url, params=params_data, cookies=eval(cookies))
+        print '----------api_code:', r.status_code
         jsdata = json.loads(r.content)
         return jsdata
 

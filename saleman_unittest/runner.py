@@ -29,7 +29,12 @@ class testLoinApi(unittest.TestCase):
             api = testApi()
             api_json = api.TestApi(method[i], url[i], data[i], headers_data[i], cookies_data)
             print("-------------->>>>>>>>>>>>>>")
-            print(api_json)
+            apijson_sort = json.dumps(api_json, sort_keys=True, indent=2, ensure_ascii=False)
+            print apijson_sort
+            print type(api_json)
+            print type(apijson_sort)
+            api.WritetoExcel('G:\myPython\mypro\saleman_unittest\gendanbaocase.xls', i, apijson_sort)
+            #print(str(api_json).encode('gbk'))
             if api_json['status'] != "":
                 self.assertEqual(code[i], api_json['status'])
                 print name[i], "接口 /------------OK！api_json['status'] =", api_json['status']

@@ -46,8 +46,8 @@ class testLoinApi(unittest.TestCase):
                 #设置登录后的cookies
                 cookies_data = excel.getCookies
 
-if __name__ == "__main__":
-    unittest.main()
-# if __name__ == '__main__':
-#     suite = unittest.TestLoader().loadTestsFromTestCase(testLoinApi)
-#     unittest.TextTestRunner(verbosity=2).run(suite)
+# if __name__ == "__main__":
+#     unittest.main()
+if __name__ == '__main__':
+    suite = unittest.TestLoader().loadTestsFromTestCase(testLoinApi)
+    unittest.TextTestRunner(verbosity=2).run(suite)

@@ -23,16 +23,12 @@ class testApi(object):
         jsdata = json.loads(r.content)
         return jsdata
 
-    # 将apijson_sid写入Excel中保存，并构造cookies
+    # 用apijson_sid构造cookies并写入Excel中保存
     def SaveCookies(self, path, apijson_sid):
         oldWb = xlrd.open_workbook(path, formatting_info=True)
         oldWb_sheet = oldWb.sheet_by_index(0)
         newWb = copy(oldWb)
         newWb_sheet = newWb.get_sheet(0)
-        # newWb_sheet.write(1, 7, apijson_sid)
-        # newWb.save(path)
-        # print '写入sid成功 /------------OK！', 'sid =', apijson_sid
-        #构造cookies并写入到Excel中保存
         login_cookies = {"sid": apijson_sid}
         #print 'login cookies:', login_cookies
         newWb_sheet.write(1, 8, str(login_cookies))
@@ -45,5 +41,5 @@ class testApi(object):
         newWb_sheet = newWb.get_sheet(0)
         newWb_sheet.write(i+1, 7, content)
         newWb.save(path)
-        print '写入excel成功 /------------OK！'
+        print '将接口返回的数据写入excel中 /------------OK！'
         newWb.save(path)

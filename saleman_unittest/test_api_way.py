@@ -37,7 +37,7 @@ class testApi(object):
         #print 'login cookies:', login_cookies
         newWb_sheet.write(1, 8, str(login_cookies))
         newWb.save(path)
-
+    #把content内容写入到Excel i+1行7列 中
     def WritetoExcel(self, path, i, content):
         oldWb = xlrd.open_workbook(path, formatting_info=True)
         oldWb_sheet = oldWb.sheet_by_index(0)

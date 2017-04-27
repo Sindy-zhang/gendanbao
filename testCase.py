@@ -135,4 +135,45 @@ __author__ = 'Administrator'
 #
 #     }
 # )
-
+#判断一个字符串是否为整数
+# def str_is_num():
+#     str = raw_input("please input a string:")
+#     try:
+#         if str[0] == '0':
+#             #print '0'
+#             return 0
+#         else:
+#             str1 = int(str)
+#             print type(str1)
+#             if isinstance(str1, int):
+#                 print str1
+#             else:
+#                 #print '0'
+#                 return 0
+#     except:
+#         #print '0'
+#         return 0
+# str_is_num()
+#
+def str_is_real():
+    str = raw_input("please input a string:")
+    arr = []
+    for i in str:
+        try:
+            if i == '(':
+                arr.append(i)
+                #print(arr)
+            elif i == ')' and len(arr) != 0:
+                arr.pop()
+            else:
+                print 'false'
+                return 'false'
+        except:
+            print 'false'
+    if len(arr) == 0:
+        print 'true'
+        return 'true'
+    else:
+        print "false"
+        return 'false'
+str_is_real()

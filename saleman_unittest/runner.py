@@ -14,6 +14,9 @@ class testLoinApi(unittest.TestCase):
     def setUp(self):
         print "start:"
 
+    def tearDown(self):
+        print "test over!"
+
     def test_LoginApi(self):
         excel = readExcel()
         excel.path = 'G:\myPython\mypro\saleman_unittest\gendanbaocase.xls'
@@ -33,7 +36,6 @@ class testLoinApi(unittest.TestCase):
             apijson_sort = json.dumps(api_json, sort_keys=True, indent=2, ensure_ascii=False)
             print apijson_sort
             api.WritetoExcel('G:\myPython\mypro\saleman_unittest\gendanbaocase.xls', i, apijson_sort)
-            #print(str(api_json).encode('gbk'))
             if api_json['status'] != "":
                 self.assertEqual(code[i], api_json['status'])
                 print name[i], "接口 /------------OK！api_json['status'] =", api_json['status']
